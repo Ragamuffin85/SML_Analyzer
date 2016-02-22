@@ -13,6 +13,8 @@ public class SerialPortTest
         {
             ehz1.ReadSequence();
             ehz1.Print();
+            if (ehz1.IsDebug())
+                System.Threading.Thread.Sleep(4000);
         }
     }
 }

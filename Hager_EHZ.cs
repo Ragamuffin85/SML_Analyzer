@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.IO;
 
 namespace SML_Analyzer
 {
@@ -19,11 +20,19 @@ namespace SML_Analyzer
                 if (_serial.IsOpen)
                     _serial.Close();
 
-            _serial = new SerialPort(devicePort, 9600, Parity.None, 8, StopBits.One);
-            _serial.Handshake = Handshake.None;
-            _serial.ReadTimeout = _serial.WriteTimeout = 5000;
+            try
+            {
+                _serial = new SerialPort(devicePort, 9600, Parity.None, 8, StopBits.One);
+                _serial.Handshake = Handshake.None;
+                _serial.ReadTimeout = _serial.WriteTimeout = 5000;
 
-            _serial.Open();
+                _serial.Open();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("No Serial Connection available => WELCOME TO DEBUG");
+                _serial = null;
+            }
         }
 
         private byte[] WaitForStartSeq()
@@ -99,8 +108,19 @@ namespace SML_Analyzer
         public SML_Sequence ReadSequence()
         {
             List<byte> sequence = new List<byte>();
-            sequence.AddRange(WaitForStartSeq());
-            sequence.AddRange(WaitForEndSeq());
+            string filename = ("SML.dump");
+            string path = System.IO.Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
+
+            if (this._serial == null )
+            {
+                sequence.AddRange(File.ReadAllBytes(path + "/" + filename));
+            }
+            else
+            {
+                sequence.AddRange(WaitForStartSeq());
+                sequence.AddRange(WaitForEndSeq());
+                /*  File.WriteAllBytes(path+"/"+filename , sequence.ToArray());*/
+            }
 
             this._lastSeq = new SML_Sequence(sequence.ToArray());
             return this._lastSeq;
@@ -122,6 +142,11 @@ namespace SML_Analyzer
             Console.WriteLine();
 
             Console.WriteLine("Verbrauch: {0:F1} Wh", val/10.0);
+        }
+
+        public bool IsDebug()
+        {
+            return this._serial == null;
         }
     }
 }
