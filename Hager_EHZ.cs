@@ -109,11 +109,12 @@ namespace SML_Analyzer
         {
             List<byte> sequence = new List<byte>();
             string filename = ("SML.dump");
-            string path = System.IO.Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
+            string basepath = System.IO.Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
+            string path = basepath + Path.DirectorySeparatorChar + "DEBUG";
 
             if (this._serial == null )
             {
-                sequence.AddRange(File.ReadAllBytes(path + "/" + filename));
+                sequence.AddRange(File.ReadAllBytes(path + Path.DirectorySeparatorChar + filename));
             }
             else
             {

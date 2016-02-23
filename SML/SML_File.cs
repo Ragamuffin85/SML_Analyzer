@@ -24,12 +24,16 @@ namespace SML_Analyzer
     public class SML_File
     {
 #region IMPORT
-#if WINDOWS
+#if __WINDOWS__
         public const string __IMPORT = "libsml.dll";
 #else
         public const string __IMPORT = "libsml.so.1";
 #endif
 
+#if __WINDOWS__
+        private IntPtr sml_file_parse(byte[] buffer, int len) { throw new Exception("FUNCTION STUB"); }
+        private void sml_file_free(IntPtr file){}
+#else
         [DllImport(__IMPORT, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr sml_file_parse(byte[] buffer, int len);
 
@@ -38,6 +42,7 @@ namespace SML_Analyzer
 
         [DllImport(__IMPORT, CallingConvention = CallingConvention.Cdecl)]
         private static extern void sml_file_free(IntPtr file);
+#endif
 
 #endregion
 
