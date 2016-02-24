@@ -52,6 +52,7 @@
     <Compile Include="SML\SML_Message.cs" />
     <Compile Include="SML\SML_Octet_String.cs" />
     <Compile Include="SML\SML_Sequence.cs" />
+    <Compile Include="Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DEBUG\SML.dump">

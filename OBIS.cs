@@ -40,16 +40,38 @@ OBIS-Kennzahl Inhalt
     
     class OBIS
     {
-        private enum Obis_Content { Producer_ID, Device_ID, Counter_Total, Counter_Rate1, Counter_Rate2 };
+        public enum Obis_Content { Producer_ID, Device_ID, Counter_Total, Counter_Rate1, Counter_Rate2,
+                                    Effective_Power, Power_L1, Power_L2, Power_L3, Counter_Total_Back,
+                                    Public_Key, 
+                                    Temp_Current, Temp_Min, Temp_Max, Temp_Mean,Voltage_Min, Voltage_Max, 
+                                    Current_L1, Voltage_L1, Current_L2, Voltage_L2, Current_L3, Voltage_L3 };
 
-        public readonly Dictionary<Obis_Content, byte[]> aliases = new Dictionary<Obis_Content, byte[]>()
+        public static readonly Dictionary<Obis_Content, byte[]> aliases = new Dictionary<Obis_Content, byte[]>()
         {
-            { Obis_Content.Producer_ID  , new byte[]{0x81, 0x81, 0xC7, 0x82, 0x03, 0xFF} },
-            { Obis_Content.Device_ID    , new byte[]{0x01, 0x00, 0x00, 0x00, 0x09, 0xFF} },
-            { Obis_Content.Counter_Total, new byte[]{0x01, 0x00, 0x01, 0x08, 0x00, 0xFF} },
-            { Obis_Content.Counter_Rate1, new byte[]{0x01, 0x00, 0x01, 0x08, 0x01, 0xFF} },
-            { Obis_Content.Counter_Rate2, new byte[]{0x01, 0x00, 0x01, 0x08, 0x02, 0xFF} }
-
+            { Obis_Content.Producer_ID  ,   new byte[]{0x81, 0x81, 0xC7, 0x82, 0x03, 0xFF} },
+            { Obis_Content.Device_ID    ,   new byte[]{0x01, 0x00, 0x00, 0x00, 0x09, 0xFF} },
+            { Obis_Content.Counter_Total,   new byte[]{0x01, 0x00, 0x01, 0x08, 0x00, 0xFF} },
+            { Obis_Content.Counter_Rate1,   new byte[]{0x01, 0x00, 0x01, 0x08, 0x01, 0xFF} },
+            { Obis_Content.Counter_Rate2,   new byte[]{0x01, 0x00, 0x01, 0x08, 0x02, 0xFF} },
+            //Statusinformation
+            { Obis_Content.Effective_Power, new byte[]{0x01, 0x00, 0x0F, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Power_L1,        new byte[]{0x01, 0x00, 0x15, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Power_L2,        new byte[]{0x01, 0x00, 0x29, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Power_L3,        new byte[]{0x01, 0x00, 0x3D, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Counter_Total_Back, new byte[]{0x01, 0x00, 0x01, 0x11, 0x00, 0xFF}},
+            { Obis_Content.Public_Key,      new byte[]{0x81, 0x81, 0xC7, 0x82, 0x05, 0xFF} },
+            { Obis_Content.Temp_Current,    new byte[]{0x01, 0x00, 0x60, 0x32, 0x00, 0x02} },
+            { Obis_Content.Temp_Min,        new byte[]{0x01, 0x00, 0x60, 0x32, 0x00, 0x03} },
+            { Obis_Content.Temp_Max,        new byte[]{0x01, 0x00, 0x60, 0x32, 0x00, 0x04} },
+            { Obis_Content.Temp_Mean,       new byte[]{0x01, 0x00, 0x60, 0x32, 0x00, 0x05} },
+            { Obis_Content.Voltage_Min,     new byte[]{0x01, 0x00, 0x60, 0x32, 0x03, 0x03} },
+            { Obis_Content.Voltage_Max,     new byte[]{0x01, 0x00, 0x60, 0x32, 0x03, 0x04} },
+            { Obis_Content.Current_L1,      new byte[]{0x01, 0x00, 0x1F, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Voltage_L1,      new byte[]{0x01, 0x00, 0x20, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Current_L2,      new byte[]{0x01, 0x00, 0x33, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Voltage_L2,      new byte[]{0x01, 0x00, 0x34, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Current_L3,      new byte[]{0x01, 0x00, 0x47, 0x07, 0x00, 0xFF} },
+            { Obis_Content.Voltage_L3,      new byte[]{0x01, 0x00, 0x48, 0x07, 0x00, 0xFF} }
         };
     }
 }

@@ -47,6 +47,7 @@ namespace SML_Analyzer
 #endregion
 
 #region DATA
+        private byte[] sequence = null;
         private IntPtr fileHndl = new IntPtr();
         private SML_File_struct file;
 
@@ -77,7 +78,8 @@ namespace SML_Analyzer
         {
             try
             {
-                fileHndl = sml_file_parse(sequence, sequence.Length);
+                this.sequence = sequence;
+                /*fileHndl = sml_file_parse(sequence, sequence.Length);
                 file = (SML_File_struct)Marshal.PtrToStructure(fileHndl, typeof(SML_File_struct));
 
                 this.buf = (SML_Buffer)Marshal.PtrToStructure(file.buf, typeof(SML_Buffer));
@@ -91,7 +93,7 @@ namespace SML_Analyzer
                     IntPtr p = new IntPtr((file.messages.ToInt64() + i * structSize));
                     SML_Message_Struct msg = (SML_Message_Struct)Marshal.PtrToStructure(p, typeof(SML_Message_Struct));
                     messages[i] = new SML_Message(msg);
-                }
+                }*/
             }
             catch (Exception e)
             {
@@ -111,7 +113,6 @@ namespace SML_Analyzer
 
         public void Print()
         {
-            
         }
             
     }
