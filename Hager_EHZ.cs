@@ -129,20 +129,16 @@ namespace SML_Analyzer
 
         public void Print()
         {
-            byte[] retVal = this._lastSeq._sequence;
-            /*foreach (byte c in retVal)
-            {
-                Console.Write("0x{0:X2} ", ((int)c));
-            }*/
+            byte[] retVal;
+            double pwr = 0.0;
+            SML_Period per;
 
-            int val = 0;
-            val |= retVal[158] << 24;
-            val |= retVal[159] << 16;
-            val |= retVal[160] << 8;
-            val |= retVal[161];
-            Console.WriteLine();
 
-            Console.WriteLine("Verbrauch: {0:F1} Wh", val/10.0);
+            retVal = this._lastSeq._sequence;
+            per = this._lastSeq._content[OBIS.Obis_Content.Counter_Rate1];
+            pwr = Math.Pow(10, per.Scaler);
+
+            Console.WriteLine("Verbrauch: {0:F1} {1}", per.Value * pwr , Unit.DLMS_Unit[per.Unit]);
         }
 
         public bool IsDebug()

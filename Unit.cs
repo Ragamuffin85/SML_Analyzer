@@ -80,7 +80,7 @@ namespace SML_Analyzer
 };*/
     public class Unit
     {
-        public static readonly Dictionary<byte, string> Unit = new Dictionary<byte, string>()
+        public static readonly Dictionary<byte, string> DLMS_Unit = new Dictionary<byte, string>()
         {
             {1, "a"},		        // time				    year			52*7*24*60*60 s
             {2, "mo"},		        // time				    month			31*24*60*60 s

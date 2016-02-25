@@ -63,11 +63,11 @@ namespace SML_Analyzer
             private set;
         }
 
-        public SML_Buffer buf
+        /*public SML_Buffer buf
         {
             get;
             private set;
-        }
+        }*/
 
 #endregion
 

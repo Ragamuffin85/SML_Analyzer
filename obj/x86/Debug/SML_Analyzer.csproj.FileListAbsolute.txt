@@ -4,3 +4,9 @@ W:\SML_Analyzer\SML_Analyzer\SML_Analyzer\SML_Analyzer\obj\x86\Debug\SML_Analyze
 W:\SML_Analyzer\SML_Analyzer\SML_Analyzer\SML_Analyzer\obj\x86\Debug\SML_Analyzer.pdb
 W:\SML_Analyzer\SML_Analyzer\SML_Analyzer\SML_Analyzer\bin\Debug\DEBUG\SML.dump
 W:\SML_Analyzer\SML_Analyzer\SML_Analyzer\SML_Analyzer\obj\x86\Debug\SML_Analyzer.csprojResolveAssemblyReference.cache
+C:\Users\pstenzel.ITK\Documents\GitHub\SML_Analyzer\obj\x86\Debug\SML_Analyzer.exe
+C:\Users\pstenzel.ITK\Documents\GitHub\SML_Analyzer\obj\x86\Debug\SML_Analyzer.pdb
+C:\Users\pstenzel.ITK\Documents\GitHub\SML_Analyzer\obj\x86\Debug\SML_Analyzer.csprojResolveAssemblyReference.cache
+C:\Users\pstenzel.ITK\Documents\GitHub\SML_Analyzer\bin\Debug\DEBUG\SML.dump
+C:\Users\pstenzel.ITK\Documents\GitHub\SML_Analyzer\bin\Debug\SML_Analyzer.exe
+C:\Users\pstenzel.ITK\Documents\GitHub\SML_Analyzer\bin\Debug\SML_Analyzer.pdb
